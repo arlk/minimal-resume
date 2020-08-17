@@ -52,11 +52,19 @@
 \pagestyle{fancy}
 \pagenumbering{gobble}
 
-% Finally, give us PDF bookmarks
+% PDF bookmarks
 \usepackage{hyperref}
 \hypersetup{colorlinks,breaklinks,pageanchor=false,
             linkcolor=darkblue,urlcolor=darkblue,
             anchorcolor=darkblue,citecolor=darkblue}
+            
+% Asterisk Footnotes 
+\newcommand\astfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%% End Document Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -146,7 +154,7 @@
 \makeheading
 
 \section{Research Interests}
-Using tools from statistical learning theory to address problems arising from model uncertainty in robotics and control theory; collision detection methods for motion planning that can handle uncertainty of obstacles in the environment; safe simultaneous learning and control for robots; safe model predictive control under uncertainty; fast approximate Bayesian inference methods;  sampling-based motion planning methods. \medskip
+Using tools from statistical learning theory to address problems arising from model uncertainty in robotics and control theory with its relevance to motion planning; safe simultaneous learning and control for robots; collision detection methods for motion planning; safe model predictive control under uncertainty; fast planning with reduced-order models. \medskip
 
 \section{Education}
 \textbf{Ph.D. Mechanical Science and Engineering}   \hfill \textbf{Jan 2017 - }\textbf{present}\\
@@ -186,8 +194,8 @@ Using tools from statistical learning theory to address problems arising from mo
 Proficiency of programming languages (from most to least comfortable): Julia, \CPP, C, Python, Simulink. Extensive experience with robotics development on quadrotors and ground robots - typically this would involve a \CPP/C firmware stack, ROS/LCM communication middleware, and a Julia/Python/Simulink layer that handles the high-level decision making. The following are some of the open-source packages published on Github:\\\medskip
 
 \begin{lonelist}
-\item \href{https://github.com/arlk/CurveProximityQueries.jl}{CurveProximityQueries.jl}: A Julia package that implements methods to compute proximity queries between parameteric curves or convex bodies in 2/3D.
-\item \href{https://github.com/arlk/CurveProximityQueries.jl}{ConvexBodyProximityQueries.jl}: A Julia package that implements methods to compute proximity queries between convex bodies in 2/3D.
+\item \href{https://github.com/arlk/SafeFeedbackMotionPlanning.jl}{SafeFeedbackMotionPlanning.jl}: A Julia package for designing nonlinear controllers that ensure guaranteed performance in trajectory tracking problems.
+\item \href{https://github.com/arlk/CurveProximityQueries.jl}{CurveProximityQueries.jl}, \href{https://github.com/arlk/CurveProximityQueries.jl}{ConvexBodyProximityQueries.jl}: Packages that implements methods to compute proximity queries between convex bodies and/or parametric curves in 2/3D.
 \item \href{https://github.com/arlk/cf-firmware}{cf-firmware}: A firmware fork of the original Crazyflie repository that additionally implements geometric control, path following for trajectories, and handles control for attached manipulators.
 \end{lonelist}
 
@@ -195,9 +203,16 @@ Proficiency of programming languages (from most to least comfortable): Julia, \C
 
 \section{Publications}
 \begin{lonelist}
+\item[] Aditya Gahlawat$^\star$, \textbf{Arun Lakshmanan$^\star$}, Lin Song, Andrew Patterson, Zhuohuan Wu, and Naira Hovakimyan. \\
+$\mathcal{RL}_1-\mathcal{GP}$: Safe simulataneous learning and control. \textit{(submitted to the Conference on Robot Learning (CoRL) 2020)}. \bigskip
+
+\item[] \textbf{Arun Lakshmanan$^\star$}, Aditya Gahlawat$^\star$, and Naira Hovakimyan. \\
+Safe feedback motion planning: A contraction theory and $\mathcal{L}_1$-adaptive control based approach. In \textit{IEEE Conference on Decision and Control 2020}, Dec 2020.\astfootnote{$^\star$equal contribution}\\
+\url{https://arxiv.org/pdf/2004.01142.pdf} \bigskip
+
 \item[] Andrew Patterson, \textbf{Arun Lakshmanan}, and Naira Hovakimyan. \\
-Intent-aware probabilistic trajectory estimation for collision prediction with uncertainty quantification. In \textit{IEEE Conference on Decision and Control 2019}, Dec 2019.
-\url{https://arxiv.org/pdf/1904.02765.pdf} \bigskip
+Intent-aware probabilistic trajectory estimation for collision prediction with uncertainty quantification. In \textit{IEEE Conference on Decision and Control 2019}, Dec 2019.\\
+\url{https://ieeexplore.ieee.org/document/9029215} \bigskip
 
 \item[] \textbf{Arun Lakshmanan}, Andrew Patterson, Venanzio Cichella, and Naira Hovakimyan.\\
 Proximity queries for absolutely continuous curves. In \textit{Proceedings of Robotics: Science and Systems}, June 2019. \\
@@ -213,11 +228,11 @@ Piecewise Bézier curve trajectory generation and control for quadrotors.
 \url{https://www.ideals.illinois.edu/handle/2142/95352} \bigskip
 
 \item[] Thiago Marinho, Christopher Widdowson, Amy Oetting, \textbf{Arun Lakshmanan}, Hang Cui, Naira Hovakimyan, Ranxiao Frances Wang, Alex Kirlik, Amy Laviers, and Dušan Stipanović.\\
-Carebots: Prolonged elderly independence using small mobile robots. In \textit{Mechanical Engineering, ASME}, Sep 2016.
+Carebots: Prolonged elderly independence using small mobile robots. In \textit{Mechanical Engineering, ASME}, Sep 2016. \\
 \url{https://asmedigitalcollection.asme.org/memagazineselect/article-pdf/138/09/S8/6359956/me-2016-sep5.pdf} \bigskip
 
 \item[] Thiago Marinho, \textbf{Arun Lakshmanan}, Venanzio Cichella, Christopher Widdowson, Hang Cui, Robert M Jones, Bentic Sebastian, and Camille Goudeseune.\\
-VR study of human-multicopter interaction in a residential setting. In \textit{2016 IEEE Virtual Reality (VR)}, Mar 2016.
+VR study of human-multicopter interaction in a residential setting. In \textit{2016 IEEE Virtual Reality (VR)}, Mar 2016. \\
 \url{https://ieeexplore.ieee.org/document/7504790} 
 
 \end{lonelist}
